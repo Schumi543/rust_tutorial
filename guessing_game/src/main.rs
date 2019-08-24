@@ -9,8 +9,6 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
-    println!("The secret number is: {}", secret_number);
-
     loop {
         println!("Please input your guess.");
 
@@ -23,10 +21,11 @@ fn main() {
         // shadowing
         let guess: u32 = match guess
             .trim() // trim \n
-            .parse() {
-                Ok(num) => num,
-                Err(_) => continue, // ignore error and continue to next loop
-            };
+            .parse()
+        {
+            Ok(num) => num,
+            Err(_) => continue, // ignore error and continue to next loop
+        };
 
         println!("You guessed: {}", guess);
 
