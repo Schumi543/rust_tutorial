@@ -21,10 +21,12 @@ fn main() {
             .expect("Failed to read line");
 
         // shadowing
-        let guess: u32 = guess
+        let guess: u32 = match guess
             .trim() // trim \n
-            .parse()
-            .expect("Please type a number!");
+            .parse() {
+                Ok(num) => num,
+                Err(_) => continue, // ignore error and continue to next loop
+            };
 
         println!("You guessed: {}", guess);
 
